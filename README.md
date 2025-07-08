@@ -25,13 +25,13 @@
 ---
 
 ## Screenshots
-- **Valid Case:**
+- **Valid Case:** <br/>
  ![Screenshot 2025-07-08 232145](https://github.com/user-attachments/assets/35c5a796-c97e-436f-8d3b-b4e8fd775157)
 
-- **Cleaning the Stock:**
+- **Cleaning the Stock:** <br/>
 ![Screenshot 2025-07-08 232534](https://github.com/user-attachments/assets/c52a6de0-afc6-4d69-b5d2-610481c37235)
 
-- **Invalid cases:**
+- **Invalid cases:** <br/>
 Insufficient stock: ![Screenshot 2025-07-08 232304](https://github.com/user-attachments/assets/2e142224-abe8-4cf7-a793-2d0b6cf626f3)
 
 
