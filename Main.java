@@ -5,39 +5,69 @@
  * Assuming weight is in grams and immutable
  */
 
-
-import Abstracts.Book;
-import Abstracts.BookStore;
-import Books.PaperBook;
-import Books.EBook;
-import Books.DemoBook;
-import Abstracts.FileType;
-
 class Main
 {
     public static void main(String[] args)
     {
-        BookStore bookStore = new BookStore();
-
-        Book OOPHeadFirst = new PaperBook("OOP Head First", "A1234", 2020, true,200.0, 15.0);
-        Book HighPerformanceMySQL = new EBook("High Performance MySQL", "A2345", 2023, true, FileType.PDF, 20.0);
-        Book DemoBook = new DemoBook("Demo: High Performance MySQL", "A2346", 2023, false,200.0);
+        
+        tb testManager = new tb();
+        try {
+            testManager.testCase_1();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
         try {
-            bookStore.addBookToStock(OOPHeadFirst, 10);
-            bookStore.addBookToStock(HighPerformanceMySQL, 15);
-            bookStore.addBookToStock(DemoBook, 5);
+            testManager.testCase_2();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
-            bookStore.getStock();
+        try {
+            testManager.testCase_3();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
-            bookStore.removeBookFromStock(DemoBook, 2);
+        try {
+            testManager.testCase_4();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
+        try {
+            testManager.testCase_5();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
-            bookStore.getStock();
+        try {
+            testManager.testCase_6();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
-            System.out.println("Total paid: " + bookStore.sellBook( "A2345", 3));
+        try {
+            testManager.testCase_66();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
-            bookStore.getStock();
-        } catch (IllegalArgumentException e) {
+        try {
+            testManager.testCase_7();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            testManager.testCase_8();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            testManager.testCase_9();
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }

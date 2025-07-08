@@ -29,18 +29,9 @@ public class BookStore {
     // }
 
     // Selling
-    public double sellBook(String ISBN, int quantity)
+    private double sellBook(Book requestedBook, int quantity)
     {
-        double shippingPrice = 0;
         double totalPrice = 0;
-        Book requestedBook = stock.getBookByISPN(ISBN);
-
-        // Initiate shipping service if there are shippable products
-        if (ShippingService.checkIfShippable(requestedBook)) {
-            initiateShippingService(requestedBook);
-            shippingPrice = shipper.getShippingPrice();
-            totalPrice += shippingPrice;
-        }
 
         if (requestedBook instanceof Purchasable)
         {
@@ -53,6 +44,26 @@ public class BookStore {
         return totalPrice;
     }
 
+    public double sellBook(String ISBN, int quantity) // Assuming QR code is provided for electronic or physical copy is given if in-store  
+    {
+        Book requestedBook = stock.getBookByISPN(ISBN);
+        return sellBook(requestedBook, quantity);
+    }
+
+    public double sellAndShipBook(String ISBN, int quantity) {
+
+        double shippingPrice = 0;
+        Book requestedBook = stock.getBookByISPN(ISBN);
+
+        // Initiate shipping service if there are shippable products
+        if (ShippingService.checkIfShippable(requestedBook)) {
+            initiateShippingService(requestedBook);
+            shippingPrice = shipper.getShippingPrice();
+        }
+
+        return shippingPrice + sellBook(requestedBook, quantity);
+    }
+
     public double sellElectronicBook(String ISBN, int quantity, String email) {
         Book requestedBook = stock.getBookByISPN(ISBN);
         
@@ -61,7 +72,7 @@ public class BookStore {
             initiateEmailingService(requestedBook, email);
         }
 
-        return sellBook(ISBN, quantity);
+        return sellBook(requestedBook, quantity);
     }
 
     // Shipping
@@ -90,6 +101,10 @@ public class BookStore {
     public void getStock()
     {
         System.out.println(stock);
+    }
+
+    public Book checkBookBYISBN(String ISBN) {
+        return stock.getBookByISPN(ISBN);
     }
 
     public void addBookToStock(Book book, int quantity) {
